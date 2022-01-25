@@ -107,20 +107,17 @@ namespace StarterAssets
 
 		private void Update()
 		{
-
-			if (!_cameraSet)
-			{
-
-			}
-			
 			JumpAndGravity();
 			GroundedCheck();
 			try
 			{
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-				GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow =
-					transform.GetChild(0).transform;
-				_cameraSet = true;
+				if (!_cameraSet)
+				{
+					_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+					GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow =
+						transform.GetChild(0).transform;
+					_cameraSet = true;
+				}
 				Move();
 			}
 			//In the event that the scene has loaded before the object (Unity...) then reload the camera from the new scene
