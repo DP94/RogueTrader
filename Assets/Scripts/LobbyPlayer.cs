@@ -110,7 +110,7 @@ public class LobbyPlayer : NetworkBehaviour
 
     public void OnPlayerJoinLobbyEvent(object sender, EventArgs args)
     {
-        if (sender is PlayerJoinEvent playerJoinEvent)
+        if (sender is PlayerJoinEvent)
         {
             _lobbyPlayerUI.RefreshLobbyUIForAllPlayers(NetworkManager.LobbyPlayers);
         }

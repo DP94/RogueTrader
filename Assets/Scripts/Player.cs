@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using StarterAssets;
+using TMPro;
 using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
     private NetworkManagerExtension _networkManager;
+    
+    [SyncVar]
+    [SerializeField]
+    private string _playerName;
+    
+    [SerializeField]
+    private Canvas _playerCanvas;
+    
+    [SerializeField]
+    private TextMeshProUGUI _playerNamePlate;
     
     public override void OnStartClient()
     {
@@ -29,8 +40,12 @@ public class Player : NetworkBehaviour
                     component.enabled = true;
                 }
             }
-
-            GetComponent<FirstPersonController>().enabled = true;
+            _playerCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            _playerNamePlate.gameObject.SetActive(true);
+            _playerNamePlate.text = PlayerName;
         }
     }
     
@@ -45,5 +60,11 @@ public class Player : NetworkBehaviour
 
             return _networkManager;
         }
+    }
+
+    public string PlayerName
+    {
+        get => _playerName;
+        set => _playerName = value;
     }
 }

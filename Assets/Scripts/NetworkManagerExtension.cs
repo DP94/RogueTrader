@@ -35,7 +35,7 @@ public class NetworkManagerExtension : NetworkManager
     {
         if (SceneManager.GetActiveScene().name == "Menu")
         {
-            LobbyPlayer player = Instantiate(_lobbyPlayerPrefab);
+            var player = Instantiate(_lobbyPlayerPrefab);
             player.ConnectionId = conn.connectionId;
             player.PlayerName = PlayerPrefs.GetString("PlayerName");
             player.IsHost = _lobbyPlayers.Count == 0;
@@ -87,15 +87,21 @@ public class NetworkManagerExtension : NetworkManager
     {
         if (SceneManager.GetActiveScene().name == "Menu" && newSceneName == "Game")
         {
-            for (int i = LobbyPlayers.Count - 1; i >= 0; i--)
+            foreach (var player in LobbyPlayers)
             {
-                LobbyPlayer player = LobbyPlayers[i];
                 var conn = player.connectionToClient;
                 var gamePlayerInstance = Instantiate(playerPrefab);
-                NetworkServer.Destroy(conn.identity.gameObject);
+                var playerScript = gamePlayerInstance.GetComponent<Player>();
+                playerScript.PlayerName = player.PlayerName;
                 DontDestroyOnLoad(gamePlayerInstance);
                 NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject, true);
             }
+
+            foreach (var conn in LobbyPlayers.Select(player => player.connectionToClient))
+            {
+                NetworkServer.Destroy(conn.identity.gameObject);
+            }
+
             _lobbyPlayers.Clear();
         }
 

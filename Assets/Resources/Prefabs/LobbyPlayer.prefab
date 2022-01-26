@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 7775018424372679844}
   - component: {fileID: 6355867224735751047}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 7832583553569108123}
   - component: {fileID: 5948751394297334660}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 4797001572156272085}
   - component: {fileID: 155976024765729321}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,16 +1371,18 @@ MonoBehaviour:
   _lobbyCanvas: {fileID: 5346157231057948715}
   _playerNames:
   - {fileID: 7042644316343893716}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4483135254338150942}
+  - {fileID: 3134297189198210689}
+  - {fileID: 6995867319261098410}
+  - {fileID: 8504699021301562509}
+  - {fileID: 4739464952760431354}
   _readyButtons:
   - {fileID: 5948751394297334660}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 155976024765729321}
+  - {fileID: 6355867224735751047}
+  - {fileID: 1167015837439266882}
+  - {fileID: 2558891527722231692}
+  - {fileID: 789060699120883840}
   _startGame: {fileID: 3544561136962762756}
 --- !u!1 &5224922311191205130
 GameObject:
@@ -1632,7 +1634,7 @@ GameObject:
   - component: {fileID: 5670781988092386918}
   - component: {fileID: 2558891527722231692}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,7 +2026,7 @@ GameObject:
   - component: {fileID: 5738756144891036817}
   - component: {fileID: 789060699120883840}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2145,7 +2147,7 @@ GameObject:
   - component: {fileID: 7683689794610615332}
   - component: {fileID: 1167015837439266882}
   m_Layer: 5
-  m_Name: Ready
+  m_Name: Ready4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
