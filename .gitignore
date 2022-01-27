@@ -76,6 +76,7 @@ crashlytics-build.properties
 
 # ParrelSync
 Assets/ParrelSync/
+Assets/ParrelSync.meta
 
 # MonoBleedingEdge
 MonoBleedingEdge/
@@ -83,6 +84,7 @@ MonoBleedingEdge/
 # Mirror
 Assets/Mirror/
 Assets/ScriptTemplates/
+Assets/Mirror.meta
 
 # TextMeshPro
 Assets/TextMesh Pro/
