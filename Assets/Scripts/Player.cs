@@ -1,6 +1,9 @@
+using System;
 using Mirror;
+using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : NetworkBehaviour
 {
@@ -15,6 +18,8 @@ public class Player : NetworkBehaviour
     
     [SerializeField]
     private TextMeshProUGUI _playerNamePlate;
+
+    private StarterAssetsInputs _input;
     
     public override void OnStartClient()
     {
@@ -37,6 +42,8 @@ public class Player : NetworkBehaviour
                     component.enabled = true;
                 }
             }
+
+            _input = GetComponent<StarterAssetsInputs>();
             _playerCanvas.gameObject.SetActive(true);
         }
         else
@@ -45,7 +52,25 @@ public class Player : NetworkBehaviour
             _playerNamePlate.text = PlayerName;
         }
     }
-    
+
+    private void Update()
+    {
+        if (_input.activate)
+        {
+            Vector2 screenCentre = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCentre);
+            if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
+            {
+                if (hit.collider.TryGetComponent<DoorButton>(out var button))
+                {
+                    button.Press();
+                }
+            }
+
+            _input.activate = false;
+        }
+    }
+
     public NetworkManagerExtension NetworkManager
     {
         get
