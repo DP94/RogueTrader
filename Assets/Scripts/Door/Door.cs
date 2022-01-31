@@ -17,6 +17,11 @@ public class Door : NetworkBehaviour
     [SerializeField]
     private GameObject _rightDoor;
 
+    [SerializeField]
+    private bool _zOpen;
+    
+    private AudioSource _doorSound;
+
     private Vector3 _originalLeftDoorPosition;
     private Vector3 _leftTarget;
     private Vector3 _originalRightDoorPosition;
@@ -26,15 +31,25 @@ public class Door : NetworkBehaviour
     {
         var leftPosition = _leftDoor.transform.position;
         _originalLeftDoorPosition = leftPosition;
-        _leftTarget = new Vector3(leftPosition.x, leftPosition.y,
-            leftPosition.z + _doorElevation);
-        
         var rightPosition = _rightDoor.transform.position;
         _originalRightDoorPosition = rightPosition;
-        _rightTarget = new Vector3(rightPosition.x, rightPosition.y,
-            rightPosition.z - _doorElevation);
-        
-        
+
+        if (_zOpen)
+        {
+            _leftTarget = new Vector3(leftPosition.x, leftPosition.y,
+                leftPosition.z + _doorElevation);
+            _rightTarget = new Vector3(rightPosition.x, rightPosition.y,
+                rightPosition.z - _doorElevation);
+        }
+        else
+        {
+            _leftTarget = new Vector3(leftPosition.x + _doorElevation, leftPosition.y,
+                leftPosition.z);
+            _rightTarget = new Vector3(rightPosition.x - _doorElevation, rightPosition.y,
+                rightPosition.z);
+        }
+
+        _doorSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -61,6 +76,10 @@ public class Door : NetworkBehaviour
     public DoorState DoorState
     {
         get => _DoorState;
-        set => _DoorState = value;
+        set
+        {
+            _DoorState = value;
+            _doorSound.Play();
+        }
     }
 }
