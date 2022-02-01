@@ -6,8 +6,7 @@ public class DoorButton : MonoBehaviour
 {
     [SerializeField]
     private bool _pressed;
-
-    [SyncVar]
+    
     [SerializeField]
     private int _id;
 
