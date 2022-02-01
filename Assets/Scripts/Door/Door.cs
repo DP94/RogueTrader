@@ -18,6 +18,7 @@ public class Door : NetworkBehaviour
     private GameObject _rightDoor;
 
     [SerializeField]
+    [Tooltip("Determines if the door should open on the Z or X axis")]
     private bool _zOpen;
     
     private AudioSource _doorSound;
