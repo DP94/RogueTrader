@@ -1,4 +1,5 @@
 using System;
+using Mirror;
 using UnityEngine;
 
 public class DoorButton : MonoBehaviour
@@ -6,6 +7,7 @@ public class DoorButton : MonoBehaviour
     [SerializeField]
     private bool _pressed;
 
+    [SyncVar]
     [SerializeField]
     private int _id;
 
