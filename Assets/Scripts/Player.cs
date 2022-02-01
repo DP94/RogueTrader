@@ -55,6 +55,8 @@ public class Player : NetworkBehaviour
 
     private void Update()
     {
+        if (!isLocalPlayer) return;
+        
         if (_input.activate)
         {
             Vector2 screenCentre = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -63,12 +65,18 @@ public class Player : NetworkBehaviour
             {
                 if (hit.collider.TryGetComponent<DoorButton>(out var button))
                 {
-                    button.Press();
+                    CmdButtonPress(button.ID);
                 }
             }
 
             _input.activate = false;
         }
+    }
+
+    [Command]
+    private void CmdButtonPress(int buttonId)
+    {
+        DoorNetworkManager.Instance.ProcessDoorForAllClients(buttonId);
     }
 
     public NetworkManagerExtension NetworkManager

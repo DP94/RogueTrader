@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum DoorState
 {
-    Opening, Closing, Finished
+    Opening, Closing, Opened, Closed
 }

@@ -11,10 +11,7 @@ public class DoorPanel : NetworkBehaviour
     private Door _door;
 
     [SerializeField]
-    private DoorButton _openButton;
-
-    [SerializeField]
-    private DoorButton _closeButton;
+    private DoorButton _doorButton;
 
     [SerializeField]
     private GameObject _panelCanvas;
@@ -24,20 +21,34 @@ public class DoorPanel : NetworkBehaviour
 
     private void Awake()
     {
-        _openButton.ButtonPressed += OpenDoor;
-        _closeButton.ButtonPressed += CloseDoor;
+        _doorButton.ButtonPressed += OpenDoor;
         _doorStatusText.text = "";
+        DoorNetworkManager.Instance.RegisterDoorPanel(this);
     }
 
+    private void Update()
+    {
+        _doorStatusText.text = _door.DoorState.ToString();
+    }
+
+    [ClientRpc]
     private void OpenDoor(object source, EventArgs args)
     {
-        _door.DoorState = DoorState.Opening;
-        _doorStatusText.text = _door.DoorState.ToString();
+        switch (_door.DoorState)
+        {
+            case DoorState.Closed:
+            case DoorState.Closing:
+                _door.DoorState = DoorState.Opening;
+                return;
+            case DoorState.Opened:
+            case DoorState.Opening:
+                _door.DoorState = DoorState.Closing;
+                return;
+            default:
+                _door.DoorState = DoorState.Closing;
+                return;
+        }
     }
-    
-    private void CloseDoor(object source, EventArgs args)
-    {
-        _door.DoorState = DoorState.Closing;
-        _doorStatusText.text = _door.DoorState.ToString();
-    }
+
+    public DoorButton DoorButton => _doorButton;
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Door : NetworkBehaviour
 {
-    [SyncVar] [SerializeField] private DoorState _DoorState = DoorState.Finished;
+    [SyncVar] [SerializeField] private DoorState _DoorState = DoorState.Closed;
 
     [SerializeField] private float _doorElevation;
 
@@ -67,7 +67,7 @@ public class Door : NetworkBehaviour
             _doorTimeElapsed += Time.deltaTime;
             if (_leftDoor.transform.position == target && _rightDoor.transform.position == rightTarget)
             {
-                _DoorState = DoorState.Finished;
+                _DoorState = _DoorState == DoorState.Opening ? DoorState.Opened : DoorState.Closed;
                 _doorTimeElapsed = 0f;
             }
         }

@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class DoorButton : MonoBehaviour
 {
-    [SerializeField] private ButtonType _type;
-
     [SerializeField]
     private bool _pressed;
 
+    [SerializeField]
+    private int _id;
+
     private AudioSource _pressSound;
+
+    [SerializeField]
+    private GameObject _openButton;
+
+    [SerializeField]
+    private GameObject _closeButton;
     
     public event EventHandler ButtonPressed;
 
@@ -24,11 +31,9 @@ public class DoorButton : MonoBehaviour
         _pressSound.Play();
     }
 
-    private void Update()
+    public int ID
     {
-        if (_pressed)
-        {
-            
-        }
+        get => _id;
+        set => _id = value;
     }
 }

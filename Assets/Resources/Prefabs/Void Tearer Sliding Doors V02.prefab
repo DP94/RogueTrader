@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _DoorState: 2
+  _DoorState: 3
   _doorElevation: 2.5
   _doorOpeningTransition: 25
   _doorTimeElapsed: 0
