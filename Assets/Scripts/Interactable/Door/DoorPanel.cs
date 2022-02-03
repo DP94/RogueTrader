@@ -1,29 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interactable;
 using Mirror;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class DoorPanel : NetworkBehaviour
+public class DoorPanel : AbstractControlPanel
 {
     [SerializeField]
     private Door _door;
-
-    [SerializeField]
-    private DoorButton _doorButton;
-
-    [SerializeField]
-    private GameObject _panelCanvas;
-
+    
     [SerializeField]
     private TextMeshProUGUI _doorStatusText;
 
     private void Awake()
     {
-        _doorButton.ButtonPressed += OpenDoor;
+        _panelButton.ButtonPressed += OpenPanel;
         _doorStatusText.text = "";
-        DoorNetworkManager.Instance.RegisterDoorPanel(this);
+        InteractableNetworkManager.Instance.RegisterInteractable(this);
     }
 
     private void Update()
@@ -32,7 +28,7 @@ public class DoorPanel : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void OpenDoor(object source, EventArgs args)
+    private void OpenPanel(object source, EventArgs args)
     {
         switch (_door.DoorState)
         {
@@ -49,6 +45,4 @@ public class DoorPanel : NetworkBehaviour
                 return;
         }
     }
-
-    public DoorButton DoorButton => _doorButton;
 }
