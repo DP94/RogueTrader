@@ -14,17 +14,17 @@ public class InteractableNetworkManager
         Interactables.Add(interactable);
     }
 
-    public void ProcessDoorForAllClients(int id)
+    public void ProcessInteractableForAllClients(int id)
     {
         var doorPanel = Interactables.Find(i => i.GetId() == id);
         if (doorPanel != null)
         {
-            RpcUpdateDoor(doorPanel);
+            RpcInteract(doorPanel);
         }
     }
 
     [ClientRpc]
-    private void RpcUpdateDoor(IInteractable interactable)
+    private void RpcInteract(IInteractable interactable)
     {
         interactable.Interact();
     }

@@ -20,7 +20,7 @@ namespace Interactable
 
         public int GetId()
         {
-            throw new System.NotImplementedException();
+            return _id;
         }
     }
 }

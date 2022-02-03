@@ -66,8 +66,7 @@ public class Player : NetworkBehaviour
             {
                 if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
                 {
-                    interactable.Interact();
-                    //CmdButtonPress(interactable.GetId());
+                    CmdInteract(interactable.GetId());
                 }
             }
 
@@ -76,9 +75,9 @@ public class Player : NetworkBehaviour
     }
 
     [Command]
-    private void CmdButtonPress(int buttonId)
+    private void CmdInteract(int buttonId)
     {
-        InteractableNetworkManager.Instance.ProcessDoorForAllClients(buttonId);
+        InteractableNetworkManager.Instance.ProcessInteractableForAllClients(buttonId);
     }
 
     public NetworkManagerExtension NetworkManager
