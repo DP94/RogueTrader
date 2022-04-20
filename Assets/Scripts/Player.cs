@@ -1,4 +1,5 @@
 using System;
+using Interactable;
 using Mirror;
 using StarterAssets;
 using TMPro;
@@ -63,9 +64,9 @@ public class Player : NetworkBehaviour
             Ray ray = Camera.main.ScreenPointToRay(screenCentre);
             if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
             {
-                if (hit.collider.TryGetComponent<DoorButton>(out var button))
+                if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
                 {
-                    CmdButtonPress(button.ID);
+                    CmdInteract(interactable.GetId());
                 }
             }
 
@@ -74,9 +75,9 @@ public class Player : NetworkBehaviour
     }
 
     [Command]
-    private void CmdButtonPress(int buttonId)
+    private void CmdInteract(int buttonId)
     {
-        DoorNetworkManager.Instance.ProcessDoorForAllClients(buttonId);
+        InteractableNetworkManager.Instance.ProcessInteractableForAllClients(buttonId);
     }
 
     public NetworkManagerExtension NetworkManager

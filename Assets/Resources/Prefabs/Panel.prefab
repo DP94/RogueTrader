@@ -67,9 +67,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _door: {fileID: 0}
-  _doorButton: {fileID: 339295663951199103}
+  _panelButton: {fileID: 339295663951199103}
   _panelCanvas: {fileID: 4875744829834587018}
+  _id: 0
+  _door: {fileID: 0}
   _doorStatusText: {fileID: 5612137964802630804}
 --- !u!1 &4875744829834587018
 GameObject:
@@ -268,9 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ed68b306295b42a29811a6f1cb9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pressed: 0
-  _openButton: {fileID: 0}
-  _closeButton: {fileID: 0}
+  _id: 0
 --- !u!1 &5356989604941950877
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ed68b306295b42a29811a6f1cb9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pressed: 0
-  _openButton: {fileID: 0}
-  _closeButton: {fileID: 0}
+  _id: 0
 --- !u!1 &6495069527554493469
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,9 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ed68b306295b42a29811a6f1cb9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pressed: 0
-  _openButton: {fileID: 5964973493150096764}
-  _closeButton: {fileID: 5097865032461778251}
+  _id: 0
 --- !u!82 &930950396155670345
 AudioSource:
   m_ObjectHideFlags: 0
