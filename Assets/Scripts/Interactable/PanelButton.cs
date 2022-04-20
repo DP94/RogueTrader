@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PanelButton : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    private int _id;
-
     private AudioSource _pressSound;
 
     public event EventHandler ButtonPressed;
@@ -30,6 +27,6 @@ public class PanelButton : MonoBehaviour, IInteractable
 
     public int GetId()
     {
-        return _id;
+        return (int) GetComponentInParent<NetworkBehaviour>().netId;
     }
 }

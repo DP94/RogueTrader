@@ -1,4 +1,6 @@
-﻿namespace Interactable
+﻿using UnityEngine;
+
+namespace Interactable
 {
     public interface IInteractable
     {

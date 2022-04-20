@@ -12,8 +12,6 @@ namespace Interactable
         [SerializeField]
         protected GameObject _panelCanvas;
 
-        [SerializeField] protected int _id;
-
         protected void Awake()
         {
             InteractableNetworkManager.Instance.RegisterInteractable(_panelButton);
@@ -27,7 +25,7 @@ namespace Interactable
 
         public int GetId()
         {
-            return _id;
+            return (int) netId;
         }
     }
 }
