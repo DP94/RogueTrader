@@ -17,9 +17,9 @@ public class DoorPanel : AbstractControlPanel
 
     private void Awake()
     {
+        base.Awake();
         _panelButton.ButtonPressed += OpenPanel;
         _doorStatusText.text = "";
-        InteractableNetworkManager.Instance.RegisterInteractable(this);
     }
 
     private void Update()

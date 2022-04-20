@@ -16,10 +16,10 @@ public class InteractableNetworkManager
 
     public void ProcessInteractableForAllClients(int id)
     {
-        var doorPanel = Interactables.Find(i => i.GetId() == id);
-        if (doorPanel != null)
+        var interactable = Interactables.Find(i => i.GetId() == id);
+        if (interactable != null)
         {
-            RpcInteract(doorPanel);
+            RpcInteract(interactable);
         }
     }
 

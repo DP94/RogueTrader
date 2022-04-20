@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using UnityEngine;
 
 namespace Interactable
@@ -12,7 +13,13 @@ namespace Interactable
         protected GameObject _panelCanvas;
 
         [SerializeField] protected int _id;
-        
+
+        protected void Awake()
+        {
+            InteractableNetworkManager.Instance.RegisterInteractable(_panelButton);
+            InteractableNetworkManager.Instance.RegisterInteractable(this);
+        }
+
         public void Interact()
         {
             _panelButton.Press();

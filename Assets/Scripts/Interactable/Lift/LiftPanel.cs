@@ -12,8 +12,8 @@ public class LiftPanel: AbstractControlPanel
 
     private void Awake()
     {
+        base.Awake();
         _panelButton.ButtonPressed += MoveLift;
-        InteractableNetworkManager.Instance.RegisterInteractable(this);
     }
     
     [ClientRpc]
